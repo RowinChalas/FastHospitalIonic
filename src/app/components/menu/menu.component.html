@@ -1,0 +1,159 @@
+<ion-menu side="start" menuId="custom" contentId="main">
+  <ion-content>
+    <div class="menu-header">
+      <div class="header-content">
+        <img
+          *ngIf="sexo == 'Masculino'"
+          src="assets/doctorr.svg"
+          alt="imagen"
+        />
+        <img *ngIf="sexo == 'Femenino'" src="assets/doctora.svg" alt="imagen" />
+        <ion-label>
+          <h2 *ngIf="sexo == 'Masculino'">Dr. {{ name }}</h2>
+          <h2 *ngIf="sexo == 'Femenino'">Dra. {{ name }}</h2>
+          <p>{{ email }}</p>
+        </ion-label>
+      </div>
+    </div>
+      
+    <ion-list>
+      <ion-item (click)="onPerfil()">
+        <ion-buttons slot="start">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="icon-only"
+            name="person-circle-outline"
+          ></ion-icon>
+        </ion-buttons>
+        <ion-button expand="full" slot="end"color="fhospitalsecond" fill="clear"> Perfil </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-buttons slot="start">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="icon-only"
+            name="duplicate-outline"
+          ></ion-icon>
+        </ion-buttons>
+        <ion-button slot="end"
+            expand="full"
+            (click)="onAgregarPaciente()"
+            color="fhospitalsecond"
+            fill="clear"
+          >
+            Agregar Paciente
+          </ion-button>
+      </ion-item>
+
+      <ion-item (click)="modalAgregarConsulta()">
+        <ion-buttons slot="start">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="icon-only"
+            name="duplicate-outline"
+          ></ion-icon>
+        </ion-buttons>
+        <ion-button slot="end" color="fhospitalsecond" fill="clear">
+          Agregar Consulta
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-buttons slot="start">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="icon-only"
+            name="settings-outline"
+          ></ion-icon>
+        </ion-buttons>
+        <ion-button
+          slot="end"
+          slot="end"
+          shape="rowund"
+          fill="clear"
+          color="fhospitalsecond"
+          (click)="onPaciente()"
+        >
+          Gestionar Pacientes
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-buttons slot="start">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="icon-only"
+            name="clipboard-outline"
+          ></ion-icon>
+        </ion-buttons>
+        <ion-button
+          slot="end"
+          shape="rowund"
+          fill="clear"
+          color="fhospitalsecond"
+          (click)="mostrarReportes()"
+        >
+          Reportes
+        </ion-button></ion-item
+      >
+      <ion-item>
+        <ion-buttons slot="start">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="icon-only"
+            name="logo-tableau"
+          ></ion-icon>
+        </ion-buttons>
+        <ion-button
+          slot="end"
+          shape="rowund"
+          fill="clear"
+          color="fhospitalsecond"
+          (click)="onSobreFastHospital()"
+        >
+          Sobre Fast Hospital
+        </ion-button></ion-item
+      >
+      <ion-item>
+        <ion-buttons slot="start">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="icon-only"
+            name="log-out-outline"
+          ></ion-icon>
+        </ion-buttons>
+        <ion-button
+          slot="end"
+          shape="rowund"
+          fill="clear"
+          color="fhospitalsecond"
+          (click)="cerrarSesion()"
+        >
+          Cerrar Sesion
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <div class="contenidor-logo">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-row>
+                    <ion-col class="center-logo">
+                      <h2>Fast <small>Hospital</small></h2>
+                    </ion-col>
+                  </ion-row>
+                  <div class="center-sub">
+                    <p>Tu salud es Primero!</p>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+</ion-menu>

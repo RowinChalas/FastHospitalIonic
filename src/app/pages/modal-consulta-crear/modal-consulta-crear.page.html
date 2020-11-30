@@ -1,0 +1,183 @@
+<ion-content>
+  <div class="ion-toolbar">
+    <ion-buttons>
+      <ion-buttons slot="start" style="width: 100%">
+        <ion-button (click)="atras()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+        <ion-label style="margin-right: 100px;" color="dark" >Consulta</ion-label>
+      </ion-buttons>
+      
+    
+      <div class="heart-position">
+        <div class="lds-heart"><div></div></div>
+      </div>
+    </ion-buttons>
+  </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label color="fhospitalsecond" position="floating"
+              >Nombre Paciente</ion-label
+            >
+            <ion-input
+              name="nomprePaciente"
+              required
+              type="text"
+              clearInput="true"
+              color="fhospitalsecond"
+              [disabled]="true"              
+              [(ngModel)]="consulta.Paciente"
+            ></ion-input>
+          </ion-item>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-label>Foto</ion-label>
+    <ion-row>
+      <ion-col size="5" offset="0">
+        <ion-row>
+          <ion-col>
+            <ion-button
+              style="margin: auto"
+              fill="clear"
+              ion-fab
+              (click)="takePicture()"
+            >
+              <img src="../../../assets/cam.svg" style="width: 50px" />
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button
+            style="margin: auto"
+            fill="clear"
+            ion-fab
+            (click)="galeryPicture()"
+            >
+            <img src="../../../assets/galeria-foto.svg" style="width: 50px" />
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <!--eliminar lo de arriba ya que aca no se editara-->
+      
+      
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-col size="5" offset="1">
+          <div style="width: 100%">
+            <img [src]="currentImage"/>
+          </div>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label color="fhospitalsecond" position="floating">Motivo Consulta</ion-label>
+          <ion-input
+            required
+            name="motivoConsulta"
+            required
+            type="text"
+            multiple="true"
+            clearInput="true"
+            color="fhospitalsecond"
+            [(ngModel)]="consulta.motivoConsulta"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+            <ion-item>
+              <ion-label color="fhospitalsecond" position="floating"
+                >Numero de Seguro</ion-label
+              >
+              <ion-input
+                required
+                name="numeroSeguro"
+                required
+                type="number"
+                clearInput="true"
+                color="fhospitalsecond"
+                [(ngModel)]="consulta.numeroSeguro"
+              ></ion-input>
+            </ion-item>
+
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating"
+        >Monto Pagado</ion-label 
+      >
+      <ion-input
+        required
+        name="montoPagado"
+        required
+        type="number"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="consulta.montoPagado"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating">Diagnostico</ion-label>
+      <ion-input
+        required
+        name="diagnostico"
+        required
+        type="text"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="consulta.diagnostico"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating">Nota</ion-label>
+      <ion-input
+        required
+        name="nota"
+        required
+        type="text"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="consulta.nota"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label
+        color="fhospitalsecond"
+        position="floating"
+        placeholder="Nacimiento"
+        >Fecha de Consulta</ion-label
+      >
+      <ion-datetime
+        name="fecha"
+        displayFormat="DD MM YYYY"
+        [(ngModel)]="consulta.fechaConsulta"
+        cancelText="Cancelar!"
+        doneText="Aceptar"
+      ></ion-datetime>
+    </ion-item>
+
+
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-button
+          fill="outline"
+          type="submit"
+          color="fhospitalprimary"
+          shape="round"
+          expand="full"
+          (click)="guardarConsulta(consulta)"
+        >
+          Guardar Consulta
+        </ion-button>
+      </ion-col>
+    </ion-row>
+</ion-content>

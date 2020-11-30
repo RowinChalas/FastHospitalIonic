@@ -1,0 +1,93 @@
+ion-content {
+  ion-slides {
+
+    ion-slide {
+      padding: 26px;
+      display: block;
+      text-align: center;
+      ion-img {
+        width: 75%;
+        padding-top: 0px;
+        margin: auto;
+      }
+      text-align: left;
+      h3 {
+        font-size: 36px;
+        font-weight: lighter;
+        color: #0b2655;
+      }
+
+      p{
+          color: #fff;
+      }
+    }
+  }
+
+}
+ion-button{
+  height: 50px;
+}
+
+
+
+.bottom-svg{
+    margin-top: -92px;
+}
+//-------------------------------------------------
+
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
+
+*,html{margin:0;padding:0}
+
+//variables
+$baseColor : #e74c3c;
+$fontColor : #000;
+
+body{
+  background: $baseColor;
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+}
+.animation
+  {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  display:inline-block;
+}
+h1{
+  text-align: center;
+  color: $fontColor;
+  margin: 0 0 100px;
+  font-size: 34px;
+  font-weight: 100;
+  text-transform: uppercase;
+  background-color: darken($baseColor, 5);
+  padding: 20px 0;
+  b{
+    font-weight: 700;
+  }
+}
+
+//follow me template
+.made-with-love{
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 10px;
+  font-family: arial;
+  color: #000;
+  i{
+    font-style: normal;
+    color: #F50057;
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+  }
+  a{
+    color: #000;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}

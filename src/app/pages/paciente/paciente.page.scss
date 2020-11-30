@@ -1,0 +1,61 @@
+.butn-home{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+ion-header{
+    border: 0px solid;
+}
+.titulo{
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    right: 90px;
+    top: 30px;
+}
+
+.items{
+    margin-top: 10px;
+}
+:root{
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1
+}
+.animate__animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-duration:1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  .animate__animated.animate__infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+
+  .animate__animated.animate__fast {
+    -webkit-animation-duration: calc(2s * 0.8);
+    animation-duration: calc(2s * 0.8);
+    -webkit-animation-duration: calc(2s * 0.8);
+    animation-duration: calc(2s * 0.8);
+  }
+
+.bg{
+    background:url('../../../assets/pacientes_bg.svg');
+    background-size: 70%;
+    background-repeat:no-repeat;
+    background-position:bottom;
+    height: 100%;
+  ion-list{
+    background: rgba($color: #000000, $alpha: .01);
+ 
+  }
+  }
+ion-item{
+  background: rgba($color: #000000, $alpha: .01);
+  ion-label{}
+  ion-avatar{ }
+}

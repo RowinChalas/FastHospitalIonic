@@ -1,0 +1,204 @@
+<ion-content>
+  <div class="ion-toolbar">
+    <ion-buttons>
+      <ion-buttons slot="start" style="width: 100%">
+        <ion-button (click)="atras()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="secondary">
+        <ion-label style="margin-top: 20px;">{{nombre.split(" ")[0]}} &nbsp;&nbsp;</ion-label>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-avatar>
+          <img *ngIf="ok==1" src="{{paciente.Foto}}" style="margin-right: 10px; margin-top: -10px;" />
+        </ion-avatar>
+      </ion-buttons>
+      <div *ngIf="ok==2"class="heart-position">
+        <div class="lds-heart"><div></div></div>
+      </div>
+    </ion-buttons>
+  </div>
+
+  <ion-item style="border: #999 solid 1px;">
+    <ion-buttons slot="start">
+      <ion-checkbox [(ngModel)]="aplicarFiltro" color="fhospitalprimary"></ion-checkbox>
+    </ion-buttons>
+    <ion-input  type="date" displayFormat="DD MM YYYY" (ionChange)="buscar($event)" [(ngModel)]="buscador">
+    </ion-input>
+  </ion-item>
+  <div class="miForm"*ngFor="let consulta of consultas | buscarFecha : buscador : aplicarFiltro : 'fecha'; let i =index">
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label color="fhospitalsecond" position="floating"
+              >Nombre Paciente</ion-label
+              >
+            <ion-input
+              name="nomprePaciente"
+              required
+              type="text"
+              clearInput="true"
+              color="fhospitalsecond"
+              [disabled]="true"
+              [(ngModel)]="nombre"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="1" offset="1">
+          <ion-button color="fhospitalprimary" shape="round" class="contador"  fill="outline">{{i+1}}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-label>Foto</ion-label>
+    <ion-row>
+      <ion-col size="5" offset="0">
+        <ion-row>
+          <ion-col>
+            <ion-button
+              style="margin: auto"
+              fill="clear"
+              ion-fab
+              (click)="takePicture(consulta)"
+            >
+              <img src="../../../assets/cam.svg" style="width: 50px" />
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button
+            style="margin: auto"
+            fill="clear"
+            ion-fab
+            (click)="galeryPicture(consulta)"
+            >
+            <img src="../../../assets/galeria-foto.svg" style="width: 50px" />
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <!--eliminar lo de arriba ya que aca no se editara-->
+      
+      
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-col size="5" offset="1">
+          <div style="width: 100%">
+            <img  [src]="consulta.evidencia"/>
+          </div>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label color="fhospitalsecond" position="floating">Motivo Consulta</ion-label>
+          <ion-input
+            required
+            name="motivoConsulta"
+            required
+            type="text"
+            multiple="true"
+            clearInput="true"
+            color="fhospitalsecond"
+            [(ngModel)]="consulta.motivoConsulta"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+            <ion-item>
+              <ion-label color="fhospitalsecond" position="floating"
+                >Numero de Seguro</ion-label
+              >
+              <ion-input
+                required
+                name="numeroSeguro"
+                required
+                type="number"
+                clearInput="true"
+                color="fhospitalsecond"
+                [(ngModel)]="consulta.numeroSeguro"
+              ></ion-input>
+            </ion-item>
+
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating"
+        >Monto Pagado</ion-label
+      >
+      <ion-input
+        required
+        name="montoPagado"
+        required
+        type="number"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="consulta.montoPagado"
+        ></ion-input>
+        <!-- ESTA INVERTIDO EL CAMPO DIAGNOSTICO CON MONTO PAGO DESDE EL API-->
+    </ion-item>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating">Diagnostico</ion-label>
+      <ion-input
+        required
+        name="diagnostico"
+        required
+        type="text"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="consulta.diagnostico"
+      ></ion-input>
+      <!-- ESTA INVERTIDO EL CAMPO DIAGNOSTICO CON MONTO PAGO DESDE EL API-->
+    </ion-item>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating">Nota</ion-label>
+      <ion-input
+        required
+        name="nota"
+        required
+        type="text"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="consulta.nota"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label
+        color="fhospitalsecond"
+        position="floating"
+        placeholder="Nacimiento"
+      
+        >Fecha de Consulta</ion-label
+      >
+      <ion-datetime
+        name="fecha"
+        displayFormat="DD MM YYYY"
+        value={{fechaStringYMD(consulta.fecha)}}
+        (ionChange)="cambiarFecha($event)"
+        cancelText="Cancelar!"
+        doneText="Aceptar"
+      ></ion-datetime>
+    </ion-item>
+
+
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-button
+          fill="outline"
+          type="submit"
+          color="fhospitalprimary"
+          shape="round"
+          expand="full"
+          (click)="actualizarConsulta(consulta)"
+        >
+          Actualizar Consulta
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

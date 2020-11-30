@@ -1,0 +1,74 @@
+.background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-size: 100%;
+    background-image: url("../../../assets/logoDoc.svg");
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+
+  //-- prueba registro
+  ion-content {
+    div {
+    }
+  }
+  .background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-size: 100%;
+    background-image: url("../../../assets/logoDoc.svg");
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  
+  .contenidor-logo {
+    margin-top: 80px;
+  }
+  .center-logo {
+    text-align: center;
+  }
+  h2 {
+    margin-top: -10px;
+    font-size: 30px;
+    small {
+      font-size: 20px;
+      color: #00bcc5;
+    }
+  }
+  
+  .center-sub{
+      margin-top: -20px;
+      text-align: center;
+      color: #999;
+      font-size: 16px;
+      letter-spacing: .5px;
+  }
+  .miForm{
+      margin: 30px;
+  }
+  .miForm{
+    padding-top: 20px;
+  
+  }
+  
+  ion-footer{
+    text-align: center;
+    background: #eee;
+    h3{
+      opacity: .7;
+      font-size: 16px;
+    }
+    a{
+      color: #0B2695;
+      cursor: pointer;
+    }
+  }
+  
+  ion-button{
+    margin-top: 20px;
+  }
+  
+  

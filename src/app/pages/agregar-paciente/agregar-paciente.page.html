@@ -1,0 +1,250 @@
+<ion-content>
+  <div class="ion-toolbar">
+    <ion-buttons>
+      <ion-buttons slot="start" style="width: 100%">
+        <ion-button (click)="atras()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <div class="heart-position" style="left: -100px; top: -25px">
+          <div class="lds-heart"><div></div></div>
+        </div>
+      </ion-buttons>
+    </ion-buttons>
+  </div>
+  <div class="miForm">
+    <form [formGroup]="form" (mgSubmit)="guardarPaciente($event)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label color="fhospitalsecond" position="floating"
+              >Cedula</ion-label
+            >
+            <ion-input
+            formControlName="cedula"
+            
+            ></ion-input>
+          </ion-item>
+          <div *ngFor="let error of errorMessages.cedula">
+            <ng-container *ngIf="cedula.hasError(error.type) && (cedula.dirty || cedula.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <ion-label>Foto</ion-label>
+      <ion-col size="5" offset="0">
+        <ion-row>
+          <ion-col>
+            <ion-button
+              style="margin: auto"
+              fill="clear"
+              ion-fab
+              (click)="takePicture()"
+            >
+              <img src="../../../assets/cam.svg" style="width: 50px" />
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button
+              style="margin: auto"
+              fill="clear"
+              ion-fab
+              (click)="galeryPicture()"
+            >
+              <img src="../../../assets/galeria-foto.svg" style="width: 50px" />
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-col size="5" offset="1">
+          <div style="width: 100%">
+            <img [src]="paciente.Foto" /><!--*ngIf="this.paciente.img =='' "-->
+            <!-- <img  [src]="this.paciente.img" *ngIf="this.paciente.img !='' " />-->
+          </div>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label color="fhospitalsecond" position="floating"
+            >Nombre</ion-label
+          >
+          <ion-input
+          formControlName="name"
+            name="name"
+            type="text"
+            clearInput="true"
+            color="fhospitalsecond"
+          ></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.name">
+          <ng-container *ngIf="name.hasError(error.type) && (cedula.dirty || name.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label color="fhospitalsecond" position="floating"
+            >Apellido</ion-label
+          >
+          <ion-input
+          formControlName="apellido"
+            name="apellido"
+            type="text"
+            clearInput="true"
+            color="fhospitalsecond"
+          ></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.apellido">
+          <ng-container *ngIf="apellido.hasError(error.type) && (cedula.dirty || apellido.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating"
+        >Tipo de Sanger</ion-label
+      >
+      <ion-input
+      formControlName="tipoSangre"
+        name="tipoSanger"
+        type="text"
+        clearInput="true"
+        color="fhospitalsecond"
+      ></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.tipoSangre">
+      <ng-container *ngIf="tipoSangre.hasError(error.type) && (tipoSangre.dirty || tipoSangre.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating">Email</ion-label>
+      <ion-input
+      formControlName="email"
+        name="email"
+        type="email"
+        clearInput="true"
+        color="fhospitalsecond"
+      ></ion-input>
+    </ion-item><div *ngFor="let error of errorMessages.email">
+      <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+
+    <ion-item style="margin-top: 7px">
+      <ion-label color="fhospitalsecond">Sexo</ion-label>
+      <ion-select
+        formControlName="sexo"
+        name="sexo"
+        color="fhospitalsecond"
+        class="custom-options"
+        interface="action-sheet"
+        (ionChange)="cambioFotoPorSexo()"
+      >
+        <ion-select-option value="Masculino">Masculino</ion-select-option>
+        <ion-select-option value="Femenino">Femenino</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.sexo">
+      <ng-container *ngIf="sexo.hasError(error.type) && (sexo.dirty || sexo.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating"
+        >Alergias</ion-label
+      >
+      <ion-input
+      formControlName="alergias"
+        name="alergias"
+        type="text"
+        clearInput="true"
+        color="fhospitalsecond"
+      ></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.alergias">
+      <ng-container *ngIf="alergias.hasError(error.type) && (alergias.dirty || alergias.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating"
+        >Signo Zodiaco</ion-label
+      >
+      <ion-select
+      formControlName="zodiaco"
+        name="zodiaco"
+        color="fhospitalsecond"
+        class="custom-options"
+        disabled="false"
+        interface="action-sheet"
+      >
+        <ion-select-option value="Aries">Aries</ion-select-option>
+        <ion-select-option value="Tauro">Tauro</ion-select-option>
+        <ion-select-option value="Geminis">Geminis</ion-select-option>
+        <ion-select-option value="Cancer">Cancer</ion-select-option>
+        <ion-select-option value="Leo">Leo</ion-select-option>
+        <ion-select-option value="Virgo">Virgo</ion-select-option>
+        <ion-select-option value="Libra">Libra</ion-select-option>
+        <ion-select-option value="Escorpio">Escorpio</ion-select-option>
+        <ion-select-option value="Sagitario">Sagitario</ion-select-option>
+        <ion-select-option value="Capricornio">Capricornio</ion-select-option>
+        <ion-select-option value="Acuario">Acuario</ion-select-option>
+        <ion-select-option value="Piscis">Piscis</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.zodiaco">
+      <ng-container *ngIf="zodiaco.hasError(error.type) && (zodiaco.dirty || zodiaco.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    </form>
+    <ion-item>
+      <ion-label
+        color="fhospitalsecond"
+        position="floating"
+        placeholder="Nacimiento"
+        >Fecha de Nacimiento</ion-label
+      >
+      <ion-datetime
+        name="fecha"
+        displayFormat="DD MM YYYY"
+        [(ngModel)]="fecha"
+        cancelText="Cancelar!"
+        doneText="Aceptar"
+      ></ion-datetime>
+    </ion-item>
+    <form [formGroup]="form">
+      <ion-row>
+        <ion-col size="8" offset="2">
+          <ion-button
+            fill="outline"
+            type="submit"
+            color="fhospitalprimary"
+            shape="round"
+            expand="full"
+            [disabled]="!form.valid"
+            (click)="guardarPaciente()"
+          >
+            Agregar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "FastApi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

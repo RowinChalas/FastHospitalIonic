@@ -1,0 +1,225 @@
+<ion-content>
+  <div class="ion-toolbar">
+    <ion-buttons>
+      <ion-buttons slot="start" style="width: 100%">
+        <ion-button (click)="atras()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="secondary">
+        <ion-label>{{paciente.NombrePaciente.split(" ")[0]}}&nbsp;</ion-label>
+      </ion-buttons>
+      <ion-buttons slot="end" style="margin-right: 15px;">
+        <ion-avatar>
+          <img src="{{paciente.Foto}}"  />
+        </ion-avatar>
+      </ion-buttons>
+    </ion-buttons>
+  </div>
+
+  <div class="miForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label color="fhospitalsecond" position="floating"
+              >Cedula</ion-label
+            >
+            <ion-input
+              name="cedula"
+              required
+              type="number"
+              clearInput="true"
+              color="fhospitalsecond"
+              minlength="11"
+              maxlength="11"
+              
+              [(ngModel)]="paciente.CedulaPaciente"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <ion-label>Foto</ion-label>
+      <ion-col size="5" offset="0">
+        <ion-row>
+          <ion-col>
+            <ion-button
+              style="margin: auto"
+              fill="clear"
+              ion-fab
+              (click)="takePicture()"
+            >
+              <img src="../../../assets/cam.svg" style="width: 50px" />
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button
+              style="margin: auto"
+              fill="clear"
+              ion-fab
+              (click)="galeryPicture()"
+            >
+              <img src="../../../assets/galeria-foto.svg" style="width: 50px" />
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      
+      
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-col size="5" offset="1">
+          <div style="width: 100%">
+            <img [src]="paciente.Foto" />
+          </div>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label color="fhospitalsecond" position="floating">Nombre</ion-label>
+          <ion-input
+            required
+            name="nombre"
+            required
+            type="text"
+            clearInput="true"
+            color="fhospitalsecond"
+            [(ngModel)]="paciente.NombrePaciente"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+            <ion-item>
+              <ion-label color="fhospitalsecond" position="floating"
+                >Apellido</ion-label
+              >
+              <ion-input
+                required
+                name="apellido"
+                required
+                type="text"
+                clearInput="true"
+                color="fhospitalsecond"
+               [(ngModel)]="paciente.ApellidoPaciente"
+              ></ion-input>
+            </ion-item>
+
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating"
+        >Tipo de Sanger</ion-label
+      >
+      <ion-input
+        required
+        name="apellido"
+        required
+        type="text"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="paciente.Tipo_SangrePaciente"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating">Email</ion-label>
+      <ion-input
+        required
+        name="Email"
+        required
+        type="email"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="paciente.EmailPaciente"
+      ></ion-input>
+    </ion-item>
+    <ion-item style="margin-top: 7px">
+      <ion-label color="fhospitalsecond">Sexo</ion-label>
+      <ion-select
+        [(ngModel)]="paciente.SexoPaciente"
+        color="fhospitalsecond"
+        class="custom-options"
+        disabled="false"
+        interface="action-sheet"
+      >
+        <ion-select-option value="Masculino">Masculino</ion-select-option>
+        <ion-select-option value="Femenino">Femenino</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label
+        color="fhospitalsecond"
+        position="floating"
+        placeholder="Nacimiento"
+        >Fecha de Nacimiento</ion-label
+      >
+      <ion-datetime
+        name="fecha"
+        placeholder="Fecha Consulta"
+        displayFormat="DD MM YYYY"
+        cancelText="Cancelar!"
+        doneText="Aceptar"
+        [(ngModel)]="fecha"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating"
+        >Alergias</ion-label
+      >
+      <ion-input
+        required
+        name="alergia"
+        required
+        type="text"
+        clearInput="true"
+        color="fhospitalsecond"
+        [(ngModel)]="paciente.AlergiasPaciente"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="fhospitalsecond" position="floating"
+        >Signo Zodiaco</ion-label
+      >
+      <ion-select
+        color="fhospitalsecond"
+        class="custom-options"
+        disabled="false"
+        interface="action-sheet"
+        [(ngModel)]="paciente.Zodiaco"
+      >
+        <ion-select-option value="Aries">Aries</ion-select-option>
+        <ion-select-option value="Tauro">Tauro</ion-select-option>
+        <ion-select-option value="Geminis">Geminis</ion-select-option>
+        <ion-select-option value="Cancer">Cancer</ion-select-option>
+        <ion-select-option value="Leo">Leo</ion-select-option>
+        <ion-select-option value="Virgo">Virgo</ion-select-option>
+        <ion-select-option value="Libra">Libra</ion-select-option>
+        <ion-select-option value="Escorpio">Escorpio</ion-select-option>
+        <ion-select-option value="Sagitario">Sagitario</ion-select-option>
+        <ion-select-option value="Capricornio">Capricornio</ion-select-option>
+        <ion-select-option value="Acuario">Acuario</ion-select-option>
+        <ion-select-option value="Piscis">Piscis</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-button
+          fill="outline"
+          type="submit"
+          color="fhospitalprimary"
+          shape="round"
+          expand="full"
+          (click)="enviarConsulta()"
+        >
+          Actualizar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

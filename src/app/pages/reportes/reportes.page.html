@@ -1,0 +1,420 @@
+<div class="loading" id="load_loading">
+  <div style="width: 100px; height: px; margin: auto;">
+    <svg version="1.1" id="L2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+    <circle fill="none" stroke="#249DAA" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="48"/>
+    <line fill="none" stroke-linecap="round" stroke="#249DAA" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="85" y2="50.5">
+    <animateTransform 
+         attributeName="transform" 
+         dur="2s"
+         type="rotate"
+         from="0 50 50"
+         to="360 50 50"
+         repeatCount="indefinite" />
+    </line>
+    <line fill="none" stroke-linecap="round" stroke="#249DAA" stroke-width="4" stroke-miterlimit="10" x1="50" y1="50" x2="49.5" y2="74">
+    <animateTransform 
+         attributeName="transform" 
+         dur="15s"
+         type="rotate"
+         from="0 50 50"
+         to="360 50 50"
+         repeatCount="indefinite" />
+    </line>
+    </svg>
+  </div>
+</div>
+
+<ion-header>
+  <ion-toolbar class="b">
+    <ion-title
+      style="padding-left:125px; --color:#fff font-size:25px"
+      style="color: #fff"
+    >
+      Reportes
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button autoHide="false" (click)="onBackReload()">
+        <ion-icon color="light" slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 style="text-align: center; color: rgb(255, 255, 255)">Reportes</h1>
+  <br />
+  <ion-card>
+    <div>
+      <ion-item class="a" button detail="false" color="light">
+        <ion-label>
+          <b style="color: rgb(8, 8, 8)">Reporte por Fecha</b>
+        </ion-label>
+      </ion-item>
+    </div>
+    <ion-card-content #expandWrapper color="light">
+      <ion-item style="border: #999 solid 1px; border-radius: 20px">
+        <ion-label position="floating">Fecha Consulta</ion-label>
+        <ion-input
+          type="date"
+          displayFormat="DD-MM-YYYY"
+          [(ngModel)]="buscador"
+          (ionChange)="cambairFecha()"
+          placeholder="Fecha"
+        >
+        </ion-input>
+      </ion-item>
+      <div
+        *ngIf="consultaFecha.length>0"
+        class="slides ion-margin-bottom"
+        style="
+          background: url('../../../assets/board_bg.svg'), #fff;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        "
+      >
+        <ion-item style="margin-top: 15px">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="start"
+            name="bar-chart-outline"
+          ></ion-icon>
+
+          <ion-label slot="start">Total Consultas</ion-label>
+          <ion-button slot="end" shape="round" fill="outline" disabled="true"
+            >{{consultaFecha.length}}</ion-button
+          >
+        </ion-item>
+        <ion-slides [options]="slidesOptions">
+          <!--<ion-slide *ngFor="let consultaP of consultaFecha | buscarFecha :buscador: aplicarFiltro:'Fecha'; let i = index">-->
+          <ion-slide *ngFor="let consultaP of consultaFecha ; let i = index">
+            <ion-card>
+              <ion-card-header>
+                <div class="main">
+                  <img
+                    [src]="consultaP.Foto"
+                  />
+                </div>
+                <div class="bottom-main">
+                  <ion-item class="">
+                    <ion-label>
+                      <h2>{{consultaP.Paciente}}</h2>
+                      <h3>{{consultaP.Fecha}}</h3>
+                    </ion-label>
+                    <ion-label>
+                      <h4>
+                        <h2 style="font-size: 16px">Nom. Seguro</h2>
+                        {{consultaP.Numero_Seguro}}
+                      </h4>
+                    </ion-label>
+                  </ion-item>
+                </div>
+              </ion-card-header>
+              <ion-card-content class="ion-text-left">
+                <ion-card-subtitle class="ion-text-right"
+                  >{{i+1}}/{{consultaFecha.length}}</ion-card-subtitle
+                >
+                <ion-progress-bar
+                  color="fhospitalsecond"
+                  value="{{(i+1)/(consultaFecha.length)}}"
+                ></ion-progress-bar>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+      <div
+        *ngIf="consultaFecha.length==0"
+        class="slides ion-margin-bottom"
+        style="
+          background: url('../../../assets/board_bg.svg'), #fff;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        "
+      >
+        <ion-item>
+          <ion-icon
+            color="fhospitalprimary"
+            slot="start"
+            name="bar-chart-outline"
+          ></ion-icon>
+          <ion-label style="width: 100%; margin-left: 10px;">Total Consultas</ion-label>
+          <ion-button
+            shape="round"
+            fill="outline"
+            disabled="true"
+            style="width: 20px"
+            >{{consultaFecha.length}}</ion-button
+          >
+        </ion-item>
+        <ion-slides>
+          <!--<ion-slide *ngFor="let consultaP of consultaFecha | buscarFecha :buscador: aplicarFiltro:'Fecha'; let i = index">-->
+          <ion-slide>
+            <ion-card>
+              <ion-card-header>
+                <div class="main" >
+                  <img 
+                    src="../../../assets/formulario.svg"
+                  />
+                </div>
+                <div class="bottom-main">
+                  <ion-item class="">
+                    <ion-label>
+                      <h2 style="font-size: 16px">Dia sin Consulta!</h2>
+                      <h4>Fecha: {{buscador}}</h4>
+                    </ion-label>
+                  </ion-item>
+                </div>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <br />
+  <ion-card>
+    <div>
+      <ion-item class="a" button detail="false" color="light">
+        <ion-label>
+          <b style="color: rgb(10, 10, 10)">Reporte por visitas</b>
+        </ion-label>
+      </ion-item>
+    </div>
+    <ion-card-content #expandWrapper>
+      <div
+        *ngIf="cantidadConsultasPacientes.length>0"
+        class="slides ion-margin-bottom"
+        style="
+          background: url('../../../assets/finance_bg_.svg'), #fff;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        "
+      >
+        <ion-item style="margin-top: 15px">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="start"
+            name="bar-chart-outline"
+          ></ion-icon>
+          <ion-label slot="start" style="margin-left: 10px"
+            >Consultas</ion-label
+          >
+          <ion-button slot="end" shape="round" fill="outline" disabled="true"
+            >{{cantidadConsultasPacientes.length}}</ion-button
+          >
+        </ion-item>
+        <ion-slides>
+          <!--<ion-slide *ngFor="let consultaP of consultaFecha | buscarFecha :buscador: aplicarFiltro:'Fecha'; let i = index">-->
+          <ion-slide
+            *ngFor="let cantidadConsulta of cantidadConsultasPacientes ; let i = index"
+          >
+            <ion-card>
+              <ion-card-header>
+                <ion-item class="ion-no-border">
+                  <ion-icon
+                    slot="start"
+                    color="shospitalprimary"
+                    name="bandage-outline"
+                    color="fhospitalprimary"
+                  ></ion-icon>
+                  <ion-label slot="start">Cantidad</ion-label>
+                  <ion-button
+                    slot="end"
+                    shape="round"
+                    fill="outline"
+                    disabled="true"
+                    >{{cantidadConsulta.Cantidad}}</ion-button
+                  >
+                </ion-item>
+                <div class="main">
+                  <img
+                    [src]="cantidadConsulta.Foto"
+                  />
+                </div>
+                <div class="bottom-main">
+                  <ion-item class="">
+                    <ion-label>
+                      <h2>{{cantidadConsulta.Nombre}}</h2>
+                      <h3>{{cantidadConsulta.Email}}</h3>
+                    </ion-label>
+                    <ion-label>
+                      <h4>
+                        <h2 style="font-size: 16px">
+                          {{cantidadConsulta.Apellido}}
+                        </h2>
+                        {{cantidadConsulta.Cedula}}
+                      </h4>
+                    </ion-label>
+                  </ion-item>
+                </div>
+              </ion-card-header>
+              <ion-card-content class="ion-text-left">
+                <ion-card-subtitle class="ion-text-right"
+                  >{{i+1}}/{{cantidadConsultasPacientes.length}}</ion-card-subtitle
+                >
+                <ion-progress-bar
+                  color="fhospitalsecond"
+                  value="{{(i+1)/(cantidadConsultasPacientes.length)}}"
+                ></ion-progress-bar>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+      <div
+        *ngIf="cantidadConsultasPacientes.length==0"
+        class="slides ion-margin-bottom"
+        style="
+          background: url('../../../assets/finance_bg_.svg'), #fff;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        "
+      >
+        <ion-slides>
+          <!--<ion-slide *ngFor="let consultaP of consultaFecha | buscarFecha :buscador: aplicarFiltro:'Fecha'; let i = index">-->
+          <ion-slide>
+            <ion-card>
+              <ion-card-header>
+                <div class="main">
+                  <img
+                    src="../../../assets/diversity_avatar_girl_woman_black_hair_people_icon_159085.svg"
+                  />
+                </div>
+                <div class="bottom-main">
+                  <ion-item class="">
+                    <ion-label>
+                      <h2 style="font-size: 16px">No Hay Pacietes</h2>
+                      <h4>no se han registrados consultas</h4>
+                    </ion-label>
+                  </ion-item>
+                </div>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <br />
+  <br />
+  <ion-card>
+    <div>
+      <ion-item class="a" button detail="false" color="light">
+        <ion-label>
+          <b style="color: rgb(12, 12, 12)">Reporte de Zodiaco</b>
+        </ion-label>
+      </ion-item>
+    </div>
+    <ion-card-content #expandWrapper>
+      <div
+        *ngIf="reporteZodiacal.length>0"
+        class="slides ion-margin-bottom"
+        style="
+          background: url('../../../assets/ion_bg_bar\ -\ copia.svg'), #fff;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        "
+      >
+        <ion-item style="margin-top: 15px">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="start"
+            name="bar-chart-outline"
+          ></ion-icon>
+          <ion-label slot="start" style="margin-left: 10px;">Zodiaco</ion-label>
+          <ion-button slot="end" shape="round" fill="outline" disabled="true"
+            >{{reporteZodiacal.length}}</ion-button
+          >
+        </ion-item>
+        <ion-slides>
+          <!--<ion-slide *ngFor="let consultaP of consultaFecha | buscarFecha :buscador: aplicarFiltro:'Fecha'; let i = index">-->
+          <ion-slide *ngFor="let zodiaco of reporteZodiacal ; let i = index">
+            <ion-card>
+              <ion-card-header>
+                <div class="main">
+                  <img
+                    [src]="zodiaco.Foto"
+                  />
+                </div>
+                <div class="bottom-main">
+                  <ion-item class="">
+                    <ion-label>
+                      <h2>{{zodiaco.Nombre}}</h2>
+                      <h3 style="font-size: 18px">{{zodiaco.Apellido}}</h3>
+                    </ion-label>
+                    <ion-label>
+                      <h2 style="font-size: 18px">{{zodiaco.Zodiaco}}</h2>
+                      <h3>{{zodiaco.Cedula}}</h3>
+                    </ion-label>
+                  </ion-item>
+                </div>
+              </ion-card-header>
+              <ion-card-content class="ion-text-left">
+                <ion-card-subtitle class="ion-text-right"
+                  >{{i+1}}/{{reporteZodiacal.length}}</ion-card-subtitle
+                >
+                <ion-progress-bar
+                  color="fhospitalsecond"
+                  value="{{(i+1)/(reporteZodiacal.length)}}"
+                ></ion-progress-bar>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+      <div
+        *ngIf="reporteZodiacal.length==0"
+        class="slides ion-margin-bottom"
+        style="
+          background: url('../../../assets/ion_bg_bar\ -\ copia.svg'), #fff;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        "
+      >
+        <ion-item style="margin-top: 15px">
+          <ion-icon
+            color="fhospitalprimary"
+            slot="start"
+            name="bar-chart-outline"
+          ></ion-icon>
+          <ion-label slot="start">Zodiaco</ion-label>
+          <ion-button slot="end" shape="round" fill="outline" disabled="true"
+            >{{reporteZodiacal.length}}</ion-button
+          >
+        </ion-item>
+        <ion-slides>
+          <!--<ion-slide *ngFor="let consultaP of consultaFecha | buscarFecha :buscador: aplicarFiltro:'Fecha'; let i = index">-->
+          <ion-slide>
+            <ion-card>
+              <ion-card-header>
+                <div class="main">
+                  <img
+                    src="../../../assets/diversity_avatar_girl_woman_black_hair_people_icon_159085.svg"
+                  />
+                </div>
+                <div class="bottom-main">
+                  <ion-item class="">
+                    <ion-label>
+                      <h2 style="font-size: 16px">No Tienes Pacientes</h2>
+                      <h4>Registrar Paciente</h4>
+                    </ion-label>
+                    <ion-label>Zodiaco</ion-label>
+                  </ion-item>
+                </div>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

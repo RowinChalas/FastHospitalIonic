@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.a{
+    --ion-grid-width: 0px 100px;
+}
+.b{
+    --background:#00bcc5;
+}
+.c{
+    border-radius: 20px;
+       background: url('../../../assets/fondo.svg');
+       background-repeat: no-repeat;
+       background-size: cover;
+    --color:#fff;
+}
+ion-card-subtitle{
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 4  00;
+    font-size: 20px;
+}
+
+

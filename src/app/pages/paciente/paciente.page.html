@@ -1,0 +1,72 @@
+<div class="container-back">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      fill="#00bcc5"
+      fill-opacity="1"
+      d="M0,64L60,53.3C120,43,240,21,360,53.3C480,85,600,171,720,218.7C840,267,960,277,1080,256C1200,235,1320,181,1380,154.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+    ></path>
+  </svg>
+</div>
+<div class="heart-position">
+  <ion-label class="titulo">Pacientes</ion-label>
+  <div class="lds-heart"><div></div></div>
+</div>
+
+<ion-buttons class="butn-home">
+  <ion-back-button defaultHref="/home-fast"></ion-back-button>
+</ion-buttons>
+
+<ion-content class="" class="bb">
+  <div class="bg">
+
+    <ion-list>
+      <!--ngIf leght>0-->
+      
+    <div class=" animate__animated animate__fast animate__slow animate__infinite" *ngIf="pacientes !=[]">
+      <ion-item
+        class="items"
+        *ngFor="let paciente of pacientes; let i = index"
+        (click)="onPaciente(paciente,i)"
+      >
+        <ion-avatar slot="start">
+          <img src="{{paciente.Foto}}" />
+        </ion-avatar>
+        
+        <ion-label>
+          <h1>{{paciente.NombrePaciente}}</h1>
+          <p>{{paciente.ApellidoPaciente}}</p>
+        </ion-label>
+        <ion-label slot="end"><h3>{{paciente.EmailPaciente}}</h3></ion-label>
+      </ion-item>
+    </div>
+    
+    <div *ngIf="pacientes.length==0" >
+      <ion-item
+        class="items"
+        *ngFor="let paciente of [1,1,1,1,1,1,1,1,1,1]; let i = index"
+        >
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </ion-avatar>
+        
+        <ion-label>
+          <h1>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </h1>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+        <ion-label slot="end"
+          ><h3>
+            <ion-skeleton-text
+            animated
+              style="width: 60%"
+            ></ion-skeleton-text></h3
+            ></ion-label>
+          </ion-item>
+    </div>
+  </ion-list>
+  
+</div>
+</ion-content>

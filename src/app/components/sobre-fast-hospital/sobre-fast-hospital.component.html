@@ -1,0 +1,91 @@
+<!--<ion-content>
+  <div class="contenidor-logo">
+    <div class="contenedor-img">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4" offset="4">
+            <ion-img src="assets/doctorr.svg"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-row>
+      <ion-col class="center-logo">
+        <h2>Fast <small>Hospital</small></h2>
+      </ion-col>
+    </ion-row>
+    <div class="center-sub">
+      <p>Tu salud es Primero!</p>
+    </div>
+  </div>
+</ion-content>-->
+<ion-content [fullscreen]="true">
+  <div class="sign-container gradient-1">
+
+    <div class="header">
+      <div class="title ion-text-center">
+        
+      </div>
+    </div>
+
+    <div class="login-container">
+
+      <ion-list lines="none" class="form fade-in">
+        <ion-item>
+          <ion-label >Email</ion-label>
+          <ion-input [(ngModel)]="correo" name="correo" class="ion-text-right"></ion-input>
+          
+        </ion-item>
+        <ion-item>
+          <ion-label >Password</ion-label>
+          <ion-input [(ngModel)]="clave" name="clave" class="ion-text-right"></ion-input>
+           
+        </ion-item>
+      </ion-list>
+
+      <div class="ion-text-center fade-in">
+        <ion-button (click)="getiniciar()" class="darkblue-button">
+          Login
+        </ion-button>
+      </div>
+
+    </div>
+
+    <div class="sign-up-container gradient-2" [ngClass]="{'active': signupView}">
+
+      <div class="toggle-text ion-text-center" tappable (click)="toggleSignUpView()">
+
+        <span *ngIf="!signupView" [ngClass]="{'fade-in': !signupView, 'fade-out': signupView}">Sign Up</span>
+        <span *ngIf="signupView" [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}">Login</span>
+        <br>
+        
+      </div>
+
+      <ion-list lines="none" class="form" [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}">
+        <ion-item>
+          <ion-label>Nombre</ion-label>
+          <ion-input [(ngModel)]="nombre" name="nombre" class="ion-text-right"></ion-input>
+           
+        </ion-item>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input [(ngModel)]="correo2" name="correo2" class="ion-text-right"></ion-input>
+          
+        </ion-item>
+        <ion-item>
+          <ion-label>Contraseña</ion-label>
+          <ion-input [(ngModel)]="clave2" name="clave2" class="ion-text-right"></ion-input>
+           
+        </ion-item>
+      </ion-list>
+      
+      <div class="ion-text-center" [ngClass]="{'fade-in': signupView, 'fade-out': !signupView}">
+        <ion-button (click)="getregi()" class="darkblue-button">
+          Login
+        </ion-button>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

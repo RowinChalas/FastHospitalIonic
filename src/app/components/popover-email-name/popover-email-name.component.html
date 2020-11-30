@@ -1,0 +1,62 @@
+
+<div class="miForm">
+  <ion-grid>
+    <ion-row>
+      <ion-col >
+        <ion-item>
+          <ion-label color="fhospitalsecond" position="floating"
+            >Nombre</ion-label
+          >
+          <ion-input
+            name="name"
+            required
+            type="string"
+            clearInput="true"
+            color="fhospitalsecond"
+            [disabled]="false"
+            
+            #name
+            [value]="user.name"
+            (ionChange)="onName(name.value)"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-item>
+    <ion-label color="fhospitalsecond" position="floating"
+      >Correo</ion-label
+    >
+    <ion-input
+    required
+      id="email"
+      name="email"
+      required
+      type="email"
+      clearInput="true"
+      color="fhospitalsecond"
+      [disabled]="false"
+      #email
+      [value]="user.email"
+      (ionChange)="onEmail(email.value)"
+      (keyup.enter)="updateEmail()"
+    ></ion-input>
+  </ion-item>
+  <ion-row>
+   
+    <ion-col size="8" offset="2">
+      <ion-button
+
+      fill="outline"
+        color="fhospitalprimary"
+        shape="round"
+        expand="full"
+        (click)="updateEmail()"
+      >
+        Actualizar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</div>

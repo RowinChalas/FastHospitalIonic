@@ -1,0 +1,183 @@
+<app-menu
+  name="{{user.name}}"
+  sexo="{{user.sexo}}"
+  email="{{user.email}}"
+></app-menu>
+<app-segment></app-segment>
+<ion-content>
+  <div class="container">
+    <div class="container-back">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#00bcc5"
+          fill-opacity="1"
+          d="M0,64L60,53.3C120,43,240,21,360,53.3C480,85,600,171,720,218.7C840,267,960,277,1080,256C1200,235,1320,181,1380,154.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+        ></path>
+      </svg>
+    </div>
+    <div class="heart-position">
+      <div class="lds-heart"><div></div></div>
+    </div>
+
+    <ion-buttons class="butn-home">
+      <ion-button (click)="onMenu()">
+        <ion-icon
+          color="fhospitalsecond"
+          slot="icon-only"
+          name="menu"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <div class="container-2">
+      <div class="hello">
+        <h1>Hello,</h1>
+        <ion-label
+          >{{user.name.split(" ")[0] }}! <img src="assets/pildora.svg"
+        /></ion-label>
+        <!--<img src="assets/heart.svg">-->
+      </div>
+
+      <div class="message">
+        <h1>FastHospital</h1>
+
+        <ion-row>
+          <ion-col size="7">
+            <p>
+              Donde quiera que se ama el arte de la medicina se ama también a la
+              humanidad.
+            </p>
+          </ion-col>
+          <ion-col size="5">
+            <img
+              style="width: 150%px"
+              src="../../../assets/doctor-protection.svg"
+            />
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-label>
+        <div *ngIf="pacientes !=[]" class="slides ion-margin-bottom" style="margin-top: 30px;">
+          <ion-slides [options]="slidesOptions">
+            <ion-slide *ngFor="let paciente of pacientes; let i = index">
+              <ion-card>
+                <ion-card-header>
+                  <div class="main">
+                    <img [src]="paciente.Foto" />
+                  </div>
+                  <div class="bottom-main">
+                    <ion-item style="border-radius: 1px" class="">
+                      <ion-label>
+                        <h2>{{paciente.NombrePaciente}}</h2>
+                        <h3>{{paciente.EmailPaciente}}</h3>
+                      </ion-label>
+                    </ion-item>
+                  </div>
+                </ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  <ion-card-subtitle class="ion-text-right"
+                    >{{i+1}}/{{pacientes.length}}</ion-card-subtitle
+                  >
+                  <ion-progress-bar
+                    color="fhospitalsecond"
+                    value="{{(i+1)/(pacientes.length)}}"
+                  ></ion-progress-bar>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </div>
+        <ion-item>
+          <h2 style="text-shadow: 1px 1px 5px #777777 ;font-weight: 250;">Menu</h2>
+        </ion-item>
+      </ion-label>
+      <div style="margin-top: 10px" class="contenedor-icon">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="col">
+              <div routerLink="/consulta" class="contenedor-categoria">
+                <ion-col size="4">
+                  <img
+                    class="categorias"
+                    src="../../../assets/icons8_form_50px_1.png"
+                  />
+                </ion-col>
+
+                <ion-label>Pacientes</ion-label>
+              </div>
+            </ion-col>
+            <ion-col class="col">
+              <div routerLink="/agregar-paciente" class="contenedor-categoria">
+                <ion-col size="4" >
+                  <img
+                    class="categorias"
+                    src="../../../assets/icons8_add_new_50px.png"
+                  />
+                </ion-col>
+
+                <ion-label>Agregar Paciente</ion-label>
+              </div>
+            </ion-col>
+            <ion-col class="col">
+              <div routerLink="/perfil-doctor" class="contenedor-categoria">
+                <ion-col size="4">
+                  <img
+                    class="categorias"
+                    src="../../../assets/icons8_edit_profile_50px_1.png"
+                  />
+                </ion-col>
+
+                <ion-label>Perfil</ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="col" offset="1.5">
+              <div
+                (click)="modalAgregarConsulta('')"
+                class="contenedor-categoria"
+              >
+                <ion-col size="2" offset="1">
+                  <img
+                    style="width: 50px; align-items: center"
+                    class="categorias"
+                    src="../../../assets/icons8_report_file_100px.png"
+                  />
+                </ion-col>
+                <ion-label> Reportes</ion-label>
+              </div>
+            </ion-col>
+            
+            <ion-col size="1.5"><div></div></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="10" offset="1">
+              <ion-segment scrollable value="heart" color="btnColor">
+                <ion-segment-button value="home" routerLink="/perfil-doctor">
+                  <ion-icon color="btnColor" name="person-circle-outline"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button routerLink="/agregar-paciente" value="heart">
+                  <ion-icon color="btnColor" name="duplicate-outline"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button
+                  (click)="modalAgregarConsulta()"
+                  value="clipboard-outline"
+                >
+                  <ion-icon color="fhospitalprimary" name="clipboard-outline"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button (click)="onSobreFastHospital()" value="star">
+                  <ion-icon color="btnColor" name="logo-tableau"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button (click)="cerrarSesion()" value="call">
+                  <ion-icon color="btnColor" name="log-out-outline"></ion-icon>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------>
+  </div>
+</ion-content>

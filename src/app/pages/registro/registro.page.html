@@ -1,0 +1,132 @@
+
+<ion-header class="ion-no-border">
+  <ion-buttons>
+    <ion-buttons style="width: 100%" slot="start">
+      <ion-back-button
+      color="fhospitalsecond"
+      defaultHref="/welcome"
+      ></ion-back-button>
+    </ion-buttons>
+    
+    <ion-buttons slot="end">
+      <div class="lds-heart"><div></div></div>
+    </ion-buttons>
+  </ion-buttons>
+</ion-header>
+
+<ion-content  >
+  
+  <div class="background">
+  </div>
+    <div class="contenidor-logo">
+      <div class="contenedor-img">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4" offset="4">
+              <ion-img src="assets/doctora.svg"></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <ion-row>
+        <ion-col class="center-logo">
+          <h2>Fast <small>Hospital</small></h2>
+        </ion-col>
+      </ion-row>
+      <div class="center-sub">
+        <p>Tu salud es Primero!</p>
+      </div>
+    </div>
+    <div class="miForm">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label color="fhospitalsecond" position="floating"
+                >Nombre</ion-label
+              >
+              <ion-input
+                name="name"
+                required
+                type="string"
+                clearInput="true"
+                color="fhospitalsecond"
+                [(ngModel)]="userRegistro.name"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item style="margin-top: 7px">
+              <ion-label color="fhospitalsecond">Sexo</ion-label>
+              <ion-select
+                [(ngModel)]="userRegistro.sexo"
+                value="m"
+                color="fhospitalsecond"
+                class="custom-options"
+                disabled="false"
+                interface="action-sheet"
+              >
+                <ion-select-option value="Masculino"
+                  >Masculino</ion-select-option
+                >
+                <ion-select-option value="Femenino">Femenino</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-item>
+        <ion-label color="fhospitalsecond" position="floating"
+          >Correo</ion-label
+        >
+        <ion-input
+          name="email"
+          required
+          type="email"
+          clearInput="true"
+          color="fhospitalsecond"
+          [(ngModel)]="userRegistro.email"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="fhospitalsecond" position="floating"
+          >Contraseña</ion-label
+        >
+        <ion-input
+          required
+          name="password"
+          required
+          type="password"
+          clearInput="true"
+          color="fhospitalsecond"
+          minlength="8"
+          [(ngModel)]="userRegistro.password"
+          (keyup.enter)="onRegistrar()"
+        ></ion-input>
+      </ion-item>
+      <ion-row  color="fhospitalsecond">
+        <ion-col size="8" offset="2">
+          <ion-button
+            type="submit"
+            color="fhospitalprimary"
+            shape="round"
+            expand="full"
+            (click)="onRegistrar()"
+          >
+            Registrar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+     
+      <ion-row  >
+        <ion-col size="12" class="ion-footer" >
+          <h3 >
+            Eres miembro?
+            <a   (click)="onInicarSesion()">Inicar Sesion</a>
+          </h3>
+        </ion-col>
+      </ion-row>
+    </div>
+  
+  </ion-content>

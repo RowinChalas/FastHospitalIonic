@@ -1,0 +1,162 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.rojo span {
+  color: #f44 !important ;
+}
+.succes span {
+  color: #2f9 !important ;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+.lds-heart div {
+  top: 26px;
+  left: 26px;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: #084f74;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 26px;
+  height: 26px;
+  background: #084f74;
+}
+.lds-heart div:before {
+  left: -26px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -26px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+.heart-position {
+  position: absolute;
+  right: 5px;
+  top: -5px;
+}
+.alert-error {
+  div {
+    border-bottom: 1px #999 solid;
+
+    .sc-ion-alert-md {
+      h2 {
+        color: #f76;
+      }
+    }
+  }
+}
+
+.alert-success {
+  div {
+    border-bottom: 1px #999 solid;
+    .sc-ion-alert-md {
+      h2 {
+        color: rgb(6, 177, 97);
+      }
+    }
+  }
+}
+
+
+#popoverCerrar{
+
+  .sc-ion-popover-md{
+    background: #095072;
+    .sc-ion-popover-md{
+      border-radius: 30px;
+    }
+  }
+}
+
+
+#sheetGestionP span{
+  border-radius: 15px;
+  margin: 10px; 
+}
+.btnMostrar span{
+  
+  .sc-ion-action-sheet-md{
+    color: #1ac3cb
+  }
+}
+.btnagregarConsulta span{
+  text-shadow: #f77;
+  .sc-ion-action-sheet-md{
+    color: #1ac3cb
+  }
+}
+.btnEditar span{
+  text-shadow: #f77;
+  .sc-ion-action-sheet-md{
+    color: #1ac3cb
+  }
+}
+
+.btnCancel span{
+
+  .sc-ion-action-sheet-md{
+    color: #F44336
+  }
+}
+

@@ -1,0 +1,74 @@
+.b{
+    --background:#249DAA;
+    color: white;
+}
+   
+ion-card{
+  width: 100%;
+  box-shadow: 100%;
+  border-radius: 14px;
+  padding:14px;
+  background: rgba(255,255,255,.8);
+  .main{
+      width: 60px;
+      height: 60px;
+      border-radius: 50px;
+      background:linear-gradient(#fff 50% , #249DAA);
+      box-shadow: 7px 7px 20px #dbdfe2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom:14px;
+      img{
+          width: 30px;
+      }
+     
+  }
+
+}
+.slides{
+  
+  padding: 4px 10px 20px 10px ;
+  border: 0 0 28px 28px;
+  border-radius: 10px 10px 28px 28px;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
+
+*,html{margin:0;padding:0}
+
+//variables
+$baseColor : #e74c3c;
+$fontColor : #000;
+
+body{
+  background: $baseColor;
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+}
+.animation
+  {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  display:inline-block;
+}
+
+.loading{
+  visibility: hidden; 
+  position: absolute;
+  width: 100%; 
+  height: 100%; 
+  left: 0; 
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  background: rgba($color: #000000, $alpha: .20);
+}
+
+  //background: url('../../../assets/bg_slides.svg'),#f1f5f8;
+  //background: url('../../../assets/finance_bg_.svg') , #fff;
+  //background:url('../../../assets/board_bg.svg'), #fff;
+  //background: url('../../../assets/ion_bg_bar\ -\ copia.svg');

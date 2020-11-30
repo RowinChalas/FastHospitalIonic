@@ -1,0 +1,27 @@
+.ion-toolbar{
+    background: url('../../../assets/fondo-header.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+}
+
+ion-label{
+    color:white;
+    font-size: 20px;
+
+}
+.miForm{
+    padding-top: 10px;
+    border-radius: 30px;
+    border: solid #9df 1px;
+    box-shadow: 5px 10px 10px #adf ;
+    margin: 10px;
+}
+
+
+ion-item{
+    border: 2px solid #233c66;
+    border-radius: 50px;
+    margin: 10px;
+}
+
